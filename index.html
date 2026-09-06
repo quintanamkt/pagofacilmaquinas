@@ -150,7 +150,7 @@
     align-items: start;
   }
   @media (max-width: 860px) {
-    .hero { grid-template-columns: 1fr; padding: 36px 0 48px; }
+    .hero { grid-template-columns: 1fr; padding: 32px 0 40px; gap: 28px; }
   }
 
   .promo-badge {
@@ -213,6 +213,16 @@
     border-radius: 20px;
     padding: 24px;
     box-shadow: var(--shadow);
+  }
+  .lead-form-hero {
+    max-width: 480px;
+    margin: -16px auto 0;
+  }
+  @media (max-width: 860px) {
+    .lead-form-hero { margin-top: 28px; }
+  }
+  @media (max-width: 420px) {
+    .lead-form { padding: 20px 18px; }
   }
   .lead-form h3 {
     font-size: 1.15rem;
@@ -288,6 +298,10 @@
   section { padding: 56px 0; }
   .section-head { max-width: 60ch; margin-bottom: 36px; }
   .section-head h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin-top: 8px; }
+  @media (max-width: 640px) {
+    section { padding: 40px 0; }
+    .section-head { margin-bottom: 24px; }
+  }
 
   .benefits {
     display: grid;
@@ -358,6 +372,16 @@
     white-space: nowrap;
   }
   .compare-note { font-size: 0.78rem; color: var(--muted); margin-top: 12px; }
+  .scroll-hint {
+    display: none;
+    font-size: 0.78rem;
+    color: var(--accent-dark);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  @media (max-width: 720px) {
+    .scroll-hint { display: block; }
+  }
 
   .steps {
     display: grid;
@@ -427,6 +451,15 @@
     font-size: 0.88rem;
     box-shadow: var(--shadow);
   }
+  @media (max-width: 480px) {
+    .whatsapp-float {
+      right: 14px;
+      bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+      padding: 12px 16px;
+      font-size: 0.8rem;
+      gap: 8px;
+    }
+  }
 
   @media (prefers-reduced-motion: no-preference) {
     .promo-badge { animation: pulse 2.4s ease-in-out infinite; }
@@ -481,7 +514,7 @@
   </div>
 
   <div class="wrap">
-    <form class="lead-form" id="lead-form-main" style="max-width:480px; margin: -16px auto 0;">
+    <form class="lead-form lead-form-hero" id="lead-form-main">
       <h3>Solicita tu máquina Getnet</h3>
       <p class="sub">Completa tus datos y un ejecutivo autorizado te contacta a la brevedad para coordinar la entrega.</p>
       <div class="field" data-field="nombre">
@@ -557,6 +590,7 @@
         <div class="eyebrow">La prueba</div>
         <h2>Compara y elige: Getnet tiene la comisión más baja</h2>
       </div>
+      <p class="scroll-hint">Desliza hacia el lado para ver toda la tabla →</p>
       <div class="compare-wrap">
         <table class="compare">
           <thead>
@@ -657,7 +691,7 @@
     <div class="wrap">
       <div class="cta-band">
         <div>
-          <div class="eyebrow" style="color:var(--accent);">Última llamada</div>
+          <div class="eyebrow">Última llamada</div>
           <h2>Tu máquina Getnet, lista esta semana</h2>
           <p>Completa el formulario o escríbenos por WhatsApp — un ejecutivo autorizado te responde rápido y sin compromiso.</p>
         </div>
