@@ -836,7 +836,7 @@
 
       if (!valid) return;
 
-      const msg = `Hola, quiero cotizar una máquina Getnet.\nNombre: ${nombre}\nMi número: ${telefono}`;
+      const msg = `Hola, quiero cotizar una máquina Getnet. Ya dejé mis datos en el formulario de la página.`;
       success.style.display = 'block';
       trackConversion('lead');
       sendToSheet({ nombre: nombre, telefono: telefono, origen: formId, fecha: new Date().toISOString() });
