@@ -780,10 +780,17 @@ src="https://www.facebook.com/tr?id=4295155290749579&ev=PageView&noscript=1"
   // página (en Vercel sí puedes cargar esos scripts externos). Una vez que
   // exista `fbq` o `gtag` en la página, estas llamadas ya quedan activas
   // solas, sin tocar el resto del código.
-  function trackConversion(kind) {
+  function trackConversion(kind, eventId) {
     try {
       if (typeof fbq === 'function') {
-        fbq('track', kind === 'lead' ? 'Lead' : 'Contact');
+        // El tercer y cuarto parámetro (eventID) permiten que Meta junte este
+        // evento del navegador con el mismo evento mandado desde el servidor
+        // (API de Conversiones) y no lo cuente dos veces.
+        if (kind === 'lead') {
+          fbq('track', 'Lead', {}, eventId ? { eventID: eventId } : undefined);
+        } else {
+          fbq('track', 'Contact');
+        }
       }
       if (typeof gtag === 'function') {
         gtag('event', kind === 'lead' ? 'generate_lead' : 'contact');
@@ -856,9 +863,12 @@ src="https://www.facebook.com/tr?id=4295155290749579&ev=PageView&noscript=1"
       if (!valid) return;
 
       const msg = `Hola, quiero cotizar una máquina Getnet.`;
+      // Id único para este envío — se manda tanto al pixel del navegador como
+      // a la hoja (y de ahí a la API de Conversiones), así Meta los junta.
+      const eventId = 'lead-' + Date.now() + '-' + Math.random().toString(36).slice(2, 10);
       success.style.display = 'block';
-      trackConversion('lead');
-      sendToSheet({ nombre: nombre, telefono: telefono, origen: formId, fecha: new Date().toISOString() });
+      trackConversion('lead', eventId);
+      sendToSheet({ nombre: nombre, telefono: telefono, origen: formId, fecha: new Date().toISOString(), eventId: eventId });
       goToWhatsApp(msg);
     });
   }
