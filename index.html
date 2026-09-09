@@ -744,7 +744,7 @@
 <script>
   // ----- CONFIGURACIÓN: reemplazar con los datos reales del negocio -----
   const CONFIG = {
-    whatsappNumber: "56941980476", // Número de WhatsApp de contacto (solo dígitos, con código de país 56...)
+    whatsappNumber: "56959780888", // Número de WhatsApp de contacto (solo dígitos, con código de país 56...)
     businessName: "PagaFácil",     // TODO: reemplazar por el nombre real del negocio/marca
     sheetsWebhookUrl: "https://script.google.com/macros/s/AKfycbyhBVlaO_uy5rhqIqvb0pOCz3ELgm9Ty0dsAEqIFJFKMqFZzh0Ne9CXbyFLqN_xJGj2Dg/exec",
   };
@@ -805,7 +805,7 @@
     }
   }
 
-  const genericMsg = `Hola, quiero cotizar una máquina Getnet..`;
+  const genericMsg = `Hola, quiero cotizar una máquina Getnet.`;
   ['header-whatsapp', 'footer-whatsapp', 'float-whatsapp'].forEach(function (id) {
     const el = document.getElementById(id);
     el.href = waLink(genericMsg);
@@ -836,7 +836,7 @@
 
       if (!valid) return;
 
-      const msg = `Hola, quiero cotizar una máquina Getnet`;
+      const msg = `Hola, quiero cotizar una máquina Getnet.`;
       success.style.display = 'block';
       trackConversion('lead');
       sendToSheet({ nombre: nombre, telefono: telefono, origen: formId, fecha: new Date().toISOString() });
